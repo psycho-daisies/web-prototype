@@ -44,8 +44,7 @@ body {
   /* background-image: url("./images/backgrounds/bg-light-3.svg"); */
   background-position: center;
   background-attachment: fixed;
-  /* background: linear-gradient(135deg, var(--brand-1) 0%, var(--brand-2) 100%); */
-    background: linear-gradient(135deg, #4db6ac 0%, #81c784 100%);
+  background: linear-gradient(135deg, var(--brand-1) 0%, var(--brand-2) 100%);
 }
 
 
