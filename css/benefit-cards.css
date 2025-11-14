@@ -64,6 +64,11 @@ header {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(6px);
 }
+.hero-banner {
+  width: 90%;
+  margin: 2.25rem auto 1.25rem;
+}
+
 .hero-logo {
   height: 32px;
 }
