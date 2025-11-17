@@ -1,0 +1,65 @@
+/* ============================
+   DEVICE CARD COMPONENT
+============================ */
+
+.device-card {
+  width: 400px;                       /* adjust as needed */
+  padding: 1.5rem 1rem;
+  border-radius: 12px;
+  background: rgba(240, 240, 240, 0.7);  /* soft translucent gray */
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  text-align: center;
+  backdrop-filter: blur(4px);          /* optional nice glass effect */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.device-icon {
+  width: 350px;         /* adjust size */
+  height: auto;
+  margin: 0 auto 0.75rem;
+}
+
+.device-title {
+  margin-top: 0.25rem;
+  font-size: 1.9rem;
+  font-weight: 600;
+  font-family: inconsolata, monospace;
+  color: #1f2933;      /* dark gray */
+}
+
+
+/* ============================
+   Hover Effect
+============================ */
+/* .device-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+} */
+ .device-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.device-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+/* ============================
+   Responsive Adjustments
+============================ */
+@media (max-width: 600px) {
+  .device-card {
+    width: 140px;
+    padding: 1rem 0.75rem;
+  }
+  .device-icon {
+    width: 60px;
+    margin-bottom: 0.5rem;
+  }
+  .device-title {
+    font-size: 0.9rem;
+  }
+}
+/* ============================
+   END OF CARD COMPONENT STYLES
+============================ */

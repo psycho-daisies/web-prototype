@@ -1,0 +1,318 @@
+  /* =============== 
+    1. Base Styles
+  ================== */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --max-width: 1100px;
+    --card-max-width: 320px;
+    --card-radius: 0.75rem;
+    --card-padding: 1.25rem;
+    --grid-gap: 1.75rem;
+    --icon-max-width: 140px;
+    --font-body: "Inconsolata", system-ui, monospace;
+
+    /* Colors */
+    --color-primary: #3b5f6a;
+    --color-secondary: #111827;
+    --color-accent: #f3f4ff;
+    --brand-1: #4db6ac;
+    --brand-2: #81c784;
+    --text: #263238;
+    --text-muted: #546e7a;
+    --white: #fff;
+    --color-button: #0cafac;
+  }
+
+  body {
+    font-family: var(--font-body);
+    line-height: 1.5;
+    color: #222;
+    background: #f3f4f6;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  /* =============== 
+    2. Header & Nav
+  ================== */
+  header {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    /* Size of header */
+    padding: 0.5rem 0;
+  }
+
+  .navbar {
+    display: flex;
+    margin: 0 auto;
+    padding: 0.25rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+  .hero-logo {
+    height: 32px;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    justify-items: center;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #1f2933;
+    font-weight: 600;
+    font-size: 1.15rem;
+  }
+
+  .nav-links a.active-link {
+    color: var(--color-link);
+  }
+
+  /* nav-link button style */
+  a.btn-special {
+    padding: 0.4rem 0.9rem;
+    background: var(--color-button);
+    color: #ffffff;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+
+  /* =============== 
+    3. Hero / Intro
+  ================== */
+  .involved-hero {
+    background: var(--color-primary);
+    color: #ffffff;
+    padding: 3rem 1.5rem 2.5rem;
+  }
+
+  .involved-hero-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .involved-hero-inner h1 {
+    font-size: 1.9rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .involved-hero-inner p {
+    max-width: 42rem;
+    margin: 0 auto;
+    font-size: 0.98rem;
+  }
+
+  /* =============== 
+    4. Involved Cards
+  ================== */
+  .involved-container {
+    max-width: var(--max-width);
+    margin: 2rem auto;
+    padding: 0 1.5rem 2.5rem;
+  }
+
+  .involved-container h2 {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .involved-intro {
+    text-align: center;
+    max-width: 42rem;
+    margin: 0 auto 2rem;
+    color: #4b5563;
+    font-size: 0.95rem;
+  }
+
+  /* Grid: 3 → 2 → 1 */
+  .involved-grid {
+    display: grid;
+    gap: var(--grid-gap);
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+  }
+
+  @media (max-width: 900px) {
+    .involved-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .involved-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Individual card */
+  .involved-card {
+    width: 100%;
+    max-width: var(--card-max-width);
+    background: #ffffff;
+    border-radius: var(--card-radius);
+    border: 1px solid #e5e7eb;
+    padding: var(--card-padding);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Icon frame (framed illustration) */
+  .icon-frame {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 0.75rem;
+
+    border-radius: 50%;
+    background: #f3f4ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.12);
+  }
+
+  .involved-icon {
+    max-width: var(--icon-max-width);
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.16));
+  }
+
+  /* Card text */
+  .involved-card h3 {
+    font-size: 1.1rem;
+    /* margin-bottom: 0.25rem; */
+    color: #111827;
+  }
+
+  .involved-card p {
+    font-size: 0.92rem;
+    color: #4b5563;
+  }
+
+  .involved-card ul {
+    padding-left: 1.1rem;
+    font-size: 0.9rem;
+    color: #4b5563;
+  }
+
+  .involved-card li {
+    margin: 0.25rem 0;
+  }
+
+  /* Card CTA button */
+  .card-cta {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    margin: 0 auto 0;
+    border-radius: 999px;
+    background: var(--color-button);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: auto;
+    margin-bottom: 0;
+  }
+
+  /* Hover effect */
+  .involved-card {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .involved-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.16);
+  }
+
+  /* =============== 
+    5. Next Steps CTA Band
+  ================== */
+  .involved-next-steps {
+    background: #111827;
+    color: #f9fafb;
+    padding: 2.5rem 1.5rem 3rem;
+  }
+
+  .next-steps-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .next-steps-inner h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .next-steps-inner p {
+    max-width: 36rem;
+    margin: 0 auto 1.5rem;
+    font-size: 0.95rem;
+    color: #d1d5db;
+  }
+
+  .next-steps-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.7rem 1.3rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .btn.primary {
+    background: #f9fafb;
+    color: #111827;
+  }
+
+  .btn.secondary {
+    border: 1px solid #e5e7eb;
+    color: #e5e7eb;
+  }
+
+
+  /* =============== 
+    6. Footer
+  ================== */
+  footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.85rem;
+    color: #4b5563;
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  /* Optional credit link */
+  .illustration-credit {
+    display: block;
+    text-align: center;
+    margin: 0.75rem 0 1.5rem;
+    font-size: 0.8rem;
+    color: #6b7280;
+  }

@@ -1,0 +1,430 @@
+:root {
+  /* ------------ CARD DIMENSIONS ------------ */
+  --card-max-width: 300px;
+  --card-padding: 1.25rem;
+  --card-radius: 0.75rem;
+
+  /* ------------ ICON SIZE ------------ */
+  --icon-max-width: 260px;      /* your big SVG illustrations */
+  --icon-margin-bottom: 1rem;
+
+  /* ------------ GRID LAYOUT ------------ */
+  --grid-gap: 3.5rem;
+
+  /* ------------ SECTION WIDTH ------------ */
+  --benefits-max-width: 900px;  /* inner wrapper max-width */
+
+  /* ------------ CONTAINER WIDTH ------------ */
+  --benefits-container-max-width: 1200px;
+
+  /* ------------ BREAKPOINTS ------------ */
+  --bp-3col: 900px;   /* switch from 3 → 2 */
+  --bp-2col: 600px;   /* switch from 2 → 1 */
+
+  --brand-1: #4db6ac;
+  --brand-2: #81c784;
+  --text: #263238;
+  --text-muted: #546e7a;
+  --white: #fff;
+  --max-width: 1100px;
+  --radius: 10px;
+  --gap: 2rem;
+}
+
+.invisible {
+  visibility: hidden;
+
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+body {
+  background: #f3f4f6; /* light gray page background */
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+    /* Your SVG background: */
+  /* background-image: url("./images/backgrounds/bg-light-3.svg"); */
+  background-position: center;
+  background-attachment: fixed;
+  background: linear-gradient(135deg, var(--brand-1) 0%, var(--brand-2) 100%);
+}
+
+
+/* =========================
+   2. Header & Navigation
+========================= */
+header {
+  /* background: #ffffff; */
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25rem 1rem 0 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+}
+.hero-banner {
+  width: 90%;
+  margin: 2.25rem auto 1.25rem;
+}
+
+.hero-logo {
+  height: 32px;
+}
+
+ul.nav-links{
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2.25rem;
+  justify-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #00796b;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #004d40;
+}
+
+/* ===================================
+   Title and Intro
+=================================== */
+* {
+  font-weight: 600;
+  font-family: inconsolata, monospace;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+      /* =============== 
+    1. Base Styles
+  ================== */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+
+.benefits-container {
+  padding: 2rem 1rem 3rem;
+  text-align: center;
+  max-width: var(--benefits-container-max-width);
+  margin: 0 auto;
+}
+
+/* ===================================
+   BENEFITS SECTION GRID (3 → 2 → 1)
+=================================== */
+
+.benefits-grid {
+  display: grid;
+  gap: var(--grid-gap);
+  /* gap: 3.5rem; */
+  margin-top: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+/* 3 → 2 */
+@media (max-width: 900px) {
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 2 → 1 */
+@media (max-width: 600px) {
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.benefits-inner {
+  max-width: var(--benefits-max-width);
+  margin: 0 auto;
+}
+
+
+/* ===================================
+   CARD SIZING
+=================================== */
+
+.benefit-card {
+  width: 100%;
+  max-width: var(--card-max-width);
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 600px) {
+  .benefit-card {
+    max-width: 280px;
+    padding: 1rem;
+  }
+}
+
+/* ============================
+   Expanded Card / Overlay
+============================ */
+.invisible-card {
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.benefit-card {
+  cursor: pointer;
+  position: relative;
+}
+
+/* The dark overlay behind the expanded card */
+.benefits-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.70); /* dark slate-ish */
+  z-index: 900;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.benefits-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* When a card is expanded, fade out / disable the others */
+.benefits-grid.has-expanded .benefit-card:not(.is-expanded) {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+/* Expanded card styling */
+.benefit-card.is-expanded {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(700px, 90vw);
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  border-radius: 1rem;
+}
+
+/* Prevent hover "bump" from fighting with the expanded transform */
+.benefit-card.is-expanded:hover {
+  transform: translate(-50%, -50%);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* Close button that only really matters in expanded mode */
+.benefit-card .card-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  border-radius: 999px;
+  border: none;
+  background: var(--color-button, #0cafac);
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.benefit-card .card-close:hover {
+  transform: translateY(-1px);
+}
+
+/* Show the button when expanded */
+.benefit-card.is-expanded .card-close {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+
+/* ===================================
+   ICON SIZING (illustrations)
+=================================== */
+
+.benefit-icon {
+  display: block;
+  margin: 0 auto var(--icon-margin-bottom);
+  width: 100%;
+  max-width: var(--icon-max-width);
+  height: auto;
+
+  /* Soft shadow behind SVG */
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.10));
+}
+
+/* 3 → 2 */
+@media (max-width: 900px) {
+  .benefit-icon {
+    max-width: 200px;
+    height: auto;
+    /* margin: 0 auto var(--icon-margin-bottom); */
+  }
+}
+
+/* 2 → 1 */
+@media (max-width: 600px) {
+  .benefit-icon {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+    /* margin: 0 auto var(--icon-margin-bottom); */
+  }
+
+}
+
+
+
+
+  /* =============== 
+    6. Footer
+  ================== */
+  footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.85rem;
+    color: #4b5563;
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  /* Optional credit link */
+  .illustration-credit {
+    display: block;
+    text-align: center;
+    margin: 0.75rem 0 1.5rem;
+    font-size: 0.8rem;
+    color: #6b7280;
+  }
+
+  /* ============================
+   Expanded Benefit Modal
+============================ */
+
+.benefit-modal {
+  position: fixed;
+  inset: 0;
+  display: none;              /* hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.benefit-modal.is-open {
+  display: flex;
+}
+
+.benefit-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.75);
+}
+
+/* Big card */
+.benefit-modal__card {
+  position: relative;
+  background: #f9fafb;
+  border-radius: 1rem;
+  padding: 2rem 2.25rem;
+  max-width: 700px;
+  width: min(90vw, 700px);
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+  z-index: 1001;
+}
+
+/* Close button */
+.benefit-modal__close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  border: none;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+  background: #0cafac;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.benefit-modal__close:hover {
+  transform: translateY(-1px);
+}
+
+/* Icon + text inside big card */
+.benefit-modal__icon {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  margin: 0 auto 1.5rem;
+}
+
+.benefit-modal__title {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.benefit-modal__summary {
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Detail section that comes from .benefit-detail in each card */
+.benefit-modal__detail h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.benefit-modal__detail ul {
+  padding-left: 1.25rem;
+  margin: 0.25rem 0 0.75rem;
+}
+
+/* Hide the .benefit-detail inside the small cards */
+.benefit-card .benefit-detail {
+  display: none;
+}
